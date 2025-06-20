@@ -8,41 +8,41 @@
       margin: 0;
       font-family: 'Comic Sans MS', cursive, sans-serif;
       background-color: #ffe6f0;
-      overflow-x: hidden;
+      overflow: hidden;
     }
 
     .map-container {
       position: relative;
       width: 100vw;
       height: 100vh;
-      background: url('map2.jpeg') no-repeat center center;
+      background: url('map3.png') no-repeat center center;
       background-size: cover;
     }
 
-    .memory {
+    .pin {
       position: absolute;
-      background-color: rgba(255, 204, 221, 0.95);
-      padding: 8px 12px;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    .pin:hover .tooltip {
+      display: block;
+    }
+
+    .tooltip {
+      display: none;
+      position: absolute;
+      top: -70px;
+      left: -100px;
+      width: 200px;
+      background: #ffccdd;
+      color: #d63384;
+      padding: 10px;
       border-radius: 12px;
       box-shadow: 0 0 10px #ff99cc;
-      cursor: pointer;
       text-align: center;
-      font-weight: bold;
-      transition: transform 0.2s;
-    }
-
-    .memory:hover {
-      transform: scale(1.1);
-    }
-
-    .answer {
-      display: none;
-      margin-top: 5px;
-      font-weight: normal;
-    }
-
-    .show {
-      display: block;
+      font-size: 14px;
+      z-index: 10;
     }
 
     .final-message {
@@ -55,6 +55,7 @@
       border-radius: 20px;
       font-size: 1.5em;
       box-shadow: 0 0 15px #ff66a3;
+      z-index: 9;
     }
 
     .animals {
@@ -72,65 +73,68 @@
 </head>
 <body>
   <div class="map-container">
-    <div class="memory" style="top: 12%; left: 32%;" onclick="toggleAnswer(this)">
-      💌 First Date
-      <div class="answer">The Oaks Mall 🛍️</div>
+    <!-- Pins -->
+    <div class="pin" style="top: 20%; left: 35%;">
+      📍
+      <div class="tooltip">First Date<br>The Oaks Mall 🛍️</div>
     </div>
 
-    <div class="memory" style="top: 20%; left: 70%;" onclick="toggleAnswer(this)">
-      💌 First Kiss
-      <div class="answer">Your Birthday 🎂💋</div>
+    <div class="pin" style="top: 15%; left: 70%;">
+      📍
+      <div class="tooltip">First Kiss<br>Your Birthday 🎂💋</div>
     </div>
 
-    <div class="memory" style="top: 35%; left: 15%;" onclick="toggleAnswer(this)">
-      💌 First Meet
-      <div class="answer">Barnes & Noble 📚</div>
+    <div class="pin" style="top: 40%; left: 20%;">
+      📍
+      <div class="tooltip">First Meet<br>Barnes & Noble 📚</div>
     </div>
 
-    <div class="memory" style="top: 45%; left: 55%;" onclick="toggleAnswer(this)">
-      💌 Nail Color
-      <div class="answer">Grey 💅</div>
+    <div class="pin" style="top: 45%; left: 50%;">
+      📍
+      <div class="tooltip">Nail Color<br>Grey 💅</div>
     </div>
 
-    <div class="memory" style="top: 60%; left: 65%;" onclick="toggleAnswer(this)">
-      💌 Davis Date
-      <div class="answer">Wicked Movie Surprise! 🎭🍿</div>
+    <div class="pin" style="top: 65%; left: 60%;">
+      📍
+      <div class="tooltip">Davis Date<br>Wicked Movie Surprise! 🎭🍿</div>
     </div>
 
-    <div class="memory" style="top: 67%; left: 25%;" onclick="toggleAnswer(this)">
-      💌 Swift Joke
-      <div class="answer">The Ladder 🪜🧣</div>
+    <div class="pin" style="top: 70%; left: 25%;">
+      📍
+      <div class="tooltip">Swift Joke<br>The Ladder 🪜🧣</div>
     </div>
 
-    <div class="memory" style="top: 15%; left: 50%;" onclick="toggleAnswer(this)">
-      💌 Balloon Joke
-      <div class="answer">Red Balloon 🎈❤️</div>
+    <div class="pin" style="top: 25%; left: 50%;">
+      📍
+      <div class="tooltip">Balloon Joke<br>Red Balloon 🎈❤️</div>
     </div>
 
-    <div class="memory" style="top: 72%; left: 48%;" onclick="toggleAnswer(this)">
-      💌 Favorite Feature
-      <div class="answer">Your Eyes 👀✨</div>
+    <div class="pin" style="top: 75%; left: 45%;">
+      📍
+      <div class="tooltip">Favorite Feature<br>Your Eyes 👀✨</div>
     </div>
 
-    <div class="memory" style="top: 27%; left: 40%;" onclick="toggleAnswer(this)">
-      💌 What I Wore Meeting Mylo
-      <div class="answer">Navy blue hoodie and sweats 🧥👖</div>
+    <div class="pin" style="top: 35%; left: 60%;">
+      📍
+      <div class="tooltip">What I Wore Meeting Mylo<br>Navy blue hoodie and sweats 👕👖</div>
     </div>
 
-    <div class="memory" style="top: 52%; left: 38%;" onclick="toggleAnswer(this)">
-      💌 First Stuffed Animal
-      <div class="answer">Bob 🧸</div>
+    <div class="pin" style="top: 55%; left: 35%;">
+      📍
+      <div class="tooltip">First Stuffed Animal<br>Bob 🧸</div>
     </div>
 
-    <div class="memory" style="top: 38%; left: 70%;" onclick="toggleAnswer(this)">
-      💌 Favorite Movie
-      <div class="answer">Rocky Aur Rani 🎥💞</div>
+    <div class="pin" style="top: 60%; left: 75%;">
+      📍
+      <div class="tooltip">Favorite Movie<br>Rocky Aur Rani 🎥💞</div>
     </div>
 
+    <!-- Final message -->
     <div class="final-message">
       Will You Be My Girlfriend? 💗
     </div>
 
+    <!-- Pets -->
     <div class="animals">
       <img src="images/your_cat.png" alt="Cat">
       <img src="images/your_dog.png" alt="Dog">
@@ -141,12 +145,5 @@
     <source src="so-american.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
-
-  <script>
-    function toggleAnswer(el) {
-      const answer = el.querySelector('.answer');
-      answer.classList.toggle('show');
-    }
-  </script>
 </body>
 </html>
