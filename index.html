@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>💕 Will You Be My Girlfriend? 💕</title>
+  <title>💕 Walk Through Memory Lane 💕</title>
   <style>
     body {
       margin: 0;
@@ -17,7 +17,18 @@
       height: 100vh;
       background: url('map3.png') no-repeat center center;
       background-size: cover;
-      overflow: hidden;
+    }
+
+    .header-title {
+      position: absolute;
+      top: 10px;
+      width: 100%;
+      text-align: center;
+      font-size: 2.5em;
+      color: #ff4da6;
+      text-shadow: 1px 1px 3px #ffb6c1;
+      font-weight: bold;
+      z-index: 10;
     }
 
     .pin {
@@ -87,51 +98,77 @@
       background-color: #ff1493;
     }
 
-    .fireworks, .fullscreen-animals {
+    .overlay {
       display: none;
       position: fixed;
       top: 0; left: 0;
       width: 100vw;
       height: 100vh;
-      background: rgba(255, 240, 245, 0.95);
+      background: rgba(255, 240, 245, 0.96);
       z-index: 100;
-      justify-content: center;
-      align-items: center;
       flex-direction: column;
-      animation: fadeIn 0.8s ease-in-out forwards;
+      align-items: center;
+      justify-content: center;
     }
 
-    .fullscreen-animals img {
-      max-height: 80vh;
-      margin: 20px;
+    .overlay h1 {
+      font-size: 2.5em;
+      color: #d63384;
+    }
+
+    .overlay h2 {
+      color: #a2005c;
+    }
+
+    .overlay .animals img {
+      height: 300px;
+      margin: 0 20px;
       border-radius: 25px;
       box-shadow: 0 0 25px #ffb6c1;
+    }
+
+    .back-button {
+      margin-top: 30px;
+      padding: 12px 25px;
+      font-size: 1em;
+      background-color: #ff66a3;
+      border: none;
+      color: white;
+      border-radius: 12px;
+      cursor: pointer;
+      box-shadow: 0 0 10px #ff69b4;
+    }
+
+    canvas#fireworks {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 101;
+      pointer-events: none;
     }
 
     @keyframes float {
       0%, 100% { transform: translateX(-50%) translateY(0); }
       50% { transform: translateX(-50%) translateY(-10px); }
     }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
   </style>
 </head>
 <body>
   <div class="map-container">
+    <div class="header-title">💕 Walk Through Memory Lane 💕</div>
+
     <!-- Pins -->
     <div class="pin" style="top: 10%; left: 25%;">📍<div class="tooltip">First Date<br>The Oaks Mall 🛍️</div></div>
     <div class="pin" style="top: 15%; left: 65%;">📍<div class="tooltip">First Kiss<br>Your Birthday 🎂💋</div></div>
-    <div class="pin" style="top: 30%; left: 15%;">📍<div class="tooltip">First Meet<br>Barnes & Noble 📚</div></div>
-    <div class="pin" style="top: 50%; left: 45%;">📍<div class="tooltip">Nail Color<br>Grey 💅</div></div>
-    <div class="pin" style="top: 75%; left: 70%;">📍<div class="tooltip">Davis Date<br>Wicked Movie Surprise! 🎭🍿</div></div>
-    <div class="pin" style="top: 65%; left: 10%;">📍<div class="tooltip">Swift Joke<br>The Ladder 🪜🧣</div></div>
-    <div class="pin" style="top: 20%; left: 45%;">📍<div class="tooltip">Balloon Joke<br>Red Balloon 🎈❤️</div></div>
+    <div class="pin" style="top: 30%; left: 15%;">📍<div class="tooltip">First Meeting<br>Barnes & Noble 📚</div></div>
+    <div class="pin" style="top: 50%; left: 45%;">📍<div class="tooltip">Nail Color when you painted mine<br>Grey 💅</div></div>
+    <div class="pin" style="top: 75%; left: 70%;">📍<div class="tooltip">Favorite Davis Date 360 comeback<br>Wicked Movie Surprise! 🎭🍿</div></div>
+    <div class="pin" style="top: 65%; left: 10%;">📍<div class="tooltip">Oldest Taylor Inside Joke<br>The Ladder 🪜🧣</div></div>
+    <div class="pin" style="top: 20%; left: 45%;">📍<div class="tooltip">Goofiest Inside Joke<br>Red Balloon 🎈❤️</div></div>
     <div class="pin" style="top: 80%; left: 30%;">📍<div class="tooltip">Favorite Feature<br>Your Eyes 👀✨</div></div>
-    <div class="pin" style="top: 30%; left: 60%;">📍<div class="tooltip">What I Wore Meeting Mylo<br>Navy blue hoodie and sweats 👕👖</div></div>
-    <div class="pin" style="top: 55%; left: 30%;">📍<div class="tooltip">First Stuffed Animal<br>Bob 🧸</div></div>
+    <div class="pin" style="top: 30%; left: 60%;">📍<div class="tooltip">What I Wore when I first met Mylo<br>Navy blue hoodie and sweats 👕👖</div></div>
+    <div class="pin" style="top: 55%; left: 30%;">📍<div class="tooltip">First Stuffed Aminal<br>Bob 🧸</div></div>
     <div class="pin" style="top: 58%; left: 80%;">📍<div class="tooltip">Favorite Movie<br>Rocky Aur Rani 🎥💞</div></div>
     <div class="pin" style="top: 43%; left: 75%;">📍<div class="tooltip">Favorite Gift from Bubba<br>Diamond Sword 💎🗡️</div></div>
 
@@ -145,12 +182,16 @@
     </div>
   </div>
 
-  <!-- Love reveal -->
-  <div class="fireworks fullscreen-animals" id="loveScreen">
-    <img src="cat.jpg" alt="Cat">
-    <img src="dog.jpg" alt="Dog">
-    <h1 style="font-size: 2.5em; color: #d63384;">💖 You said YES! 💖</h1>
-    <h2 style="color: #a2005c;">Let’s go on the cutest adventure ever 🐾</h2>
+  <!-- Fireworks & Animal Reveal -->
+  <canvas id="fireworks"></canvas>
+  <div class="overlay" id="loveScreen">
+    <div class="animals" style="display: flex;">
+      <img src="cat.jpg" alt="Cat">
+      <img src="dog.jpg" alt="Dog">
+    </div>
+    <h1>💖 You said YES! 💖</h1>
+    <h2>Let’s go on the cutest adventure ever 🐾</h2>
+    <button class="back-button" onclick="hideLove()">Back to Map</button>
   </div>
 
   <!-- Music -->
@@ -159,9 +200,30 @@
     Your browser does not support the audio element.
   </audio>
 
+  <!-- Fireworks script -->
+  <script src="https://cdn.jsdelivr.net/npm/fireworks-js@2.1.2/dist/fireworks.js"></script>
   <script>
+    const fireworks = new Fireworks(document.getElementById('fireworks'), {
+      hue: { min: 0, max: 360 },
+      delay: { min: 15, max: 30 },
+      rocketsPoint: 50,
+      speed: 2,
+      acceleration: 1.05,
+      friction: 0.97,
+      gravity: 1.5,
+      particles: 100,
+      trace: 3,
+      explosion: 5
+    });
+
     function launchLove() {
       document.getElementById('loveScreen').style.display = 'flex';
+      fireworks.start();
+    }
+
+    function hideLove() {
+      document.getElementById('loveScreen').style.display = 'none';
+      fireworks.stop();
     }
   </script>
 </body>
