@@ -17,11 +17,12 @@
       height: 100vh;
       background: url('map3.png') no-repeat center center;
       background-size: cover;
+      overflow: hidden;
     }
 
     .pin {
       position: absolute;
-      font-size: 42px;
+      font-size: 64px;
       cursor: pointer;
       z-index: 2;
     }
@@ -33,16 +34,16 @@
     .tooltip {
       display: none;
       position: absolute;
-      top: -80px;
-      left: -100px;
-      width: 220px;
+      top: -90px;
+      left: -110px;
+      width: 230px;
       background: #ffcce6;
-      color: #d63384;
-      padding: 12px;
-      border-radius: 14px;
-      box-shadow: 0 0 12px #ff99cc;
+      color: #a2005c;
+      padding: 14px;
+      border-radius: 16px;
+      box-shadow: 0 0 14px #ff99cc;
       text-align: center;
-      font-size: 14px;
+      font-size: 15px;
       font-weight: bold;
       z-index: 3;
     }
@@ -53,18 +54,23 @@
       left: 50%;
       transform: translateX(-50%);
       background-color: #ffb6d3;
-      padding: 20px 35px;
+      padding: 20px 40px;
       border-radius: 25px;
       font-size: 1.6em;
       color: #a2005c;
       box-shadow: 0 0 20px #ff69b4;
+      z-index: 9;
       animation: float 3s ease-in-out infinite;
+      text-align: center;
+    }
+
+    .final-buttons {
+      margin-top: 15px;
     }
 
     .final-button {
-      display: block;
-      margin: 20px auto 0;
-      padding: 15px 30px;
+      margin: 0 10px;
+      padding: 15px 25px;
       background-color: #ff69b4;
       border: none;
       color: white;
@@ -81,54 +87,70 @@
       background-color: #ff1493;
     }
 
-    .animals {
+    .fireworks, .fullscreen-animals {
       display: none;
-      position: absolute;
-      bottom: 120px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 5;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(255, 240, 245, 0.95);
+      z-index: 100;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      animation: fadeIn 0.8s ease-in-out forwards;
     }
 
-    .animals img {
-      height: 100px;
-      margin: 0 15px;
-      border-radius: 15px;
-      box-shadow: 0 0 10px #ffb6c1;
+    .fullscreen-animals img {
+      max-height: 80vh;
+      margin: 20px;
+      border-radius: 25px;
+      box-shadow: 0 0 25px #ffb6c1;
     }
 
     @keyframes float {
       0%, 100% { transform: translateX(-50%) translateY(0); }
       50% { transform: translateX(-50%) translateY(-10px); }
     }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
   </style>
 </head>
 <body>
   <div class="map-container">
-    <!-- Pins with memories -->
-    <div class="pin" style="top: 20%; left: 35%;">📍<div class="tooltip">First Date<br>The Oaks Mall 🛍️</div></div>
-    <div class="pin" style="top: 15%; left: 70%;">📍<div class="tooltip">First Kiss<br>My Birthday 🎂💋</div></div>
-    <div class="pin" style="top: 40%; left: 20%;">📍<div class="tooltip">First Meet<br>Barnes & Noble 📚</div></div>
-    <div class="pin" style="top: 45%; left: 50%;">📍<div class="tooltip">Nail Color<br>Grey 💅</div></div>
-    <div class="pin" style="top: 65%; left: 60%;">📍<div class="tooltip">Davis Date<br>Wicked Movie Surprise! 🎭🍿</div></div>
-    <div class="pin" style="top: 70%; left: 25%;">📍<div class="tooltip">Swift Joke<br>The Ladder 🪜🧣</div></div>
-    <div class="pin" style="top: 25%; left: 50%;">📍<div class="tooltip">Balloon Joke<br>Red Balloon 🎈❤️</div></div>
-    <div class="pin" style="top: 75%; left: 45%;">📍<div class="tooltip">Favorite Feature<br>Your Eyes 👀✨</div></div>
-    <div class="pin" style="top: 35%; left: 60%;">📍<div class="tooltip">What I Wore Meeting Mylo<br>Navy blue hoodie and sweats 👕👖</div></div>
-    <div class="pin" style="top: 55%; left: 35%;">📍<div class="tooltip">First Stuffed Animal<br>Bob 🧸</div></div>
-    <div class="pin" style="top: 60%; left: 75%;">📍<div class="tooltip">Favorite Movie<br>Rocky Aur Rani 🎥💞</div></div>
+    <!-- Pins -->
+    <div class="pin" style="top: 10%; left: 25%;">📍<div class="tooltip">First Date<br>The Oaks Mall 🛍️</div></div>
+    <div class="pin" style="top: 15%; left: 65%;">📍<div class="tooltip">First Kiss<br>Your Birthday 🎂💋</div></div>
+    <div class="pin" style="top: 30%; left: 15%;">📍<div class="tooltip">First Meet<br>Barnes & Noble 📚</div></div>
+    <div class="pin" style="top: 50%; left: 45%;">📍<div class="tooltip">Nail Color<br>Grey 💅</div></div>
+    <div class="pin" style="top: 75%; left: 70%;">📍<div class="tooltip">Davis Date<br>Wicked Movie Surprise! 🎭🍿</div></div>
+    <div class="pin" style="top: 65%; left: 10%;">📍<div class="tooltip">Swift Joke<br>The Ladder 🪜🧣</div></div>
+    <div class="pin" style="top: 20%; left: 45%;">📍<div class="tooltip">Balloon Joke<br>Red Balloon 🎈❤️</div></div>
+    <div class="pin" style="top: 80%; left: 30%;">📍<div class="tooltip">Favorite Feature<br>Your Eyes 👀✨</div></div>
+    <div class="pin" style="top: 30%; left: 60%;">📍<div class="tooltip">What I Wore Meeting Mylo<br>Navy blue hoodie and sweats 👕👖</div></div>
+    <div class="pin" style="top: 55%; left: 30%;">📍<div class="tooltip">First Stuffed Animal<br>Bob 🧸</div></div>
+    <div class="pin" style="top: 58%; left: 80%;">📍<div class="tooltip">Favorite Movie<br>Rocky Aur Rani 🎥💞</div></div>
+    <div class="pin" style="top: 43%; left: 75%;">📍<div class="tooltip">Favorite Gift from Bubba<br>Diamond Sword 💎🗡️</div></div>
 
-    <!-- Message & Button -->
+    <!-- Message & Buttons -->
     <div class="final-message">
       Will You Be My Girlfriend? 💗
-      <button class="final-button" onclick="showAnimals()">YES?</button>
+      <div class="final-buttons">
+        <button class="final-button" onclick="launchLove()">YES???</button>
+        <button class="final-button" onclick="launchLove()">YES</button>
+      </div>
     </div>
+  </div>
 
-    <!-- Cat & Dog images -->
-    <div class="animals" id="animalReveal">
-      <img src="cat.jpg" alt="Cat">
-      <img src="dog.jpg" alt="Dog">
-    </div>
+  <!-- Love reveal -->
+  <div class="fireworks fullscreen-animals" id="loveScreen">
+    <img src="cat.jpg" alt="Cat">
+    <img src="dog.jpg" alt="Dog">
+    <h1 style="font-size: 2.5em; color: #d63384;">💖 You said YES! 💖</h1>
+    <h2 style="color: #a2005c;">Let’s go on the cutest adventure ever 🐾</h2>
   </div>
 
   <!-- Music -->
@@ -138,8 +160,8 @@
   </audio>
 
   <script>
-    function showAnimals() {
-      document.getElementById('animalReveal').style.display = 'flex';
+    function launchLove() {
+      document.getElementById('loveScreen').style.display = 'flex';
     }
   </script>
 </body>
