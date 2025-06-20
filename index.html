@@ -1,1 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Will You Be My Girlfriend?</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>💖 A Little Scavenger Hunt 💖</h1>
+    <p>Let’s go on a memory walk... click each question 💌</p>
 
+    <div class="question">Where was our first date?</div>
+    <div class="answer">The Oaks Mall 🛍️</div>
+
+    <div class="question">When was our first kiss?</div>
+    <div class="answer">Your Birthday 🎂💋</div>
+
+    <div class="question">Where did we first meet?</div>
+    <div class="answer">Barnes & Noble 📚</div>
+
+    <div class="question">What color did you paint my nails?</div>
+    <div class="answer">Grey 💅</div>
+
+    <div class="question">Favorite date in Davis?</div>
+    <div class="answer">Wicked Movie Surprise! 🎭🍿</div>
+
+    <div class="question">Oldest & Taylor Swift inside joke?</div>
+    <div class="answer">The Ladder 🪜🧣</div>
+
+    <div class="question">Go-to card/letter joke?</div>
+    <div class="answer">Red Balloon 🎈❤️</div>
+
+    <div class="question">What do I love most about your features?</div>
+    <div class="answer">Your Eyes 👀✨</div>
+
+    <h2 class="final">So... Will You Be My Girlfriend? 💗🐶🐱</h2>
+    <button onclick="alert('Say YES 💍 or else the cats and dogs will cry 😿🐾')">YES?</button>
+
+    <div class="animals">
+      <img src="images/cat1.png" alt="Cute Cat">
+      <img src="images/dog1.png" alt="Cute Dog">
+      <!-- Add more cute animal images here -->
+    </div>
+  </div>
+
+  <script>
+    const questions = document.querySelectorAll('.question');
+    questions.forEach(q => {
+      q.addEventListener('click', () => {
+        q.nextElementSibling.classList.toggle('show');
+      });
+    });
+  </script>
+</body>
+</html>
