@@ -3,121 +3,135 @@
 <head>
   <meta charset="UTF-8">
   <title>💕 Will You Be My Girlfriend? 💕</title>
-  <link rel="stylesheet" href="style.css">
   <style>
     body {
-      background: #ffe6f0 url('map_background.png') no-repeat center center fixed;
-      background-size: cover;
+      margin: 0;
       font-family: 'Comic Sans MS', cursive, sans-serif;
-      color: #d63384;
-      text-align: center;
-      padding: 30px;
+      background-color: #ffe6f0;
+      overflow-x: hidden;
     }
-    .container {
-      background-color: rgba(255, 255, 255, 0.8);
-      border-radius: 20px;
-      padding: 20px;
-      max-width: 800px;
-      margin: auto;
-      box-shadow: 0 0 20px #ff99cc;
+
+    .map-container {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      background: url('map.png') no-repeat center center;
+      background-size: cover;
     }
-    .question {
-      margin-top: 20px;
-      background-color: #ffccdd;
+
+    .memory {
+      position: absolute;
+      background-color: rgba(255, 204, 221, 0.9);
       padding: 10px;
-      border-radius: 10px;
-      font-weight: bold;
-    }
-    .emoji {
+      border-radius: 12px;
+      box-shadow: 0 0 10px #ff99cc;
       cursor: pointer;
+      text-align: center;
+      font-weight: bold;
+      transition: transform 0.2s;
     }
+
+    .memory:hover {
+      transform: scale(1.1);
+    }
+
     .answer {
       display: none;
-      background-color: #fff0f5;
-      border-radius: 8px;
-      padding: 10px;
       margin-top: 5px;
+      font-weight: normal;
     }
-    .answer.show {
+
+    .show {
       display: block;
     }
-    .final {
-      margin-top: 30px;
-    }
-    button {
-      margin-top: 20px;
+
+    .final-message {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #ffccdd;
       padding: 15px 25px;
-      background-color: #ff69b4;
-      color: white;
-      border: none;
-      border-radius: 10px;
-      font-size: 1.2em;
-      cursor: pointer;
+      border-radius: 20px;
+      font-size: 1.5em;
+      box-shadow: 0 0 15px #ff66a3;
     }
+
+    .animals {
+      position: absolute;
+      bottom: 100px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
     .animals img {
-      height: 100px;
-      margin: 10px;
+      height: 90px;
+      margin: 0 10px;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>💖 A Scavenger Map 💖</h1>
-    <p>Tap on the 💌 emojis to uncover each memory!</p>
-
-    <div class="question">Where was our first date? <span class="emoji">💌</span>
+  <div class="map-container">
+    <div class="memory" style="top: 10%; left: 20%;" onclick="toggleAnswer(this)">
+      💌 First Date
       <div class="answer">The Oaks Mall 🛍️</div>
     </div>
 
-    <div class="question">When was our first kiss? <span class="emoji">💌</span>
+    <div class="memory" style="top: 30%; left: 70%;" onclick="toggleAnswer(this)">
+      💌 First Kiss
       <div class="answer">Your Birthday 🎂💋</div>
     </div>
 
-    <div class="question">Where did we first meet? <span class="emoji">💌</span>
+    <div class="memory" style="top: 50%; left: 10%;" onclick="toggleAnswer(this)">
+      💌 First Meet
       <div class="answer">Barnes & Noble 📚</div>
     </div>
 
-    <div class="question">What color did you paint my nails? <span class="emoji">💌</span>
+    <div class="memory" style="top: 40%; left: 45%;" onclick="toggleAnswer(this)">
+      💌 Nail Color
       <div class="answer">Grey 💅</div>
     </div>
 
-    <div class="question">Favorite date in Davis? <span class="emoji">💌</span>
+    <div class="memory" style="top: 65%; left: 65%;" onclick="toggleAnswer(this)">
+      💌 Davis Date
       <div class="answer">Wicked Movie Surprise! 🎭🍿</div>
     </div>
 
-    <div class="question">Oldest & Taylor Swift inside joke? <span class="emoji">💌</span>
+    <div class="memory" style="top: 70%; left: 20%;" onclick="toggleAnswer(this)">
+      💌 Swift Joke
       <div class="answer">The Ladder 🪜🧣</div>
     </div>
 
-    <div class="question">Go-to card/letter joke? <span class="emoji">💌</span>
+    <div class="memory" style="top: 15%; left: 60%;" onclick="toggleAnswer(this)">
+      💌 Balloon Joke
       <div class="answer">Red Balloon 🎈❤️</div>
     </div>
 
-    <div class="question">What do I love most about your features? <span class="emoji">💌</span>
+    <div class="memory" style="top: 80%; left: 40%;" onclick="toggleAnswer(this)">
+      💌 Favorite Feature
       <div class="answer">Your Eyes 👀✨</div>
     </div>
 
-    <h2 class="final">So... Will You Be My Girlfriend? 💗</h2>
-    <button onclick="alert('Say YES 💍 or the pets will be sad 😿🐶')">YES?</button>
+    <div class="final-message">
+      Will You Be My Girlfriend? 💗
+    </div>
 
     <div class="animals">
-      <img src="images/your_cat.png" alt="Cute Cat">
-      <img src="images/your_dog.png" alt="Cute Dog">
+      <img src="images/your_cat.png" alt="Cat">
+      <img src="images/your_dog.png" alt="Dog">
     </div>
   </div>
 
   <audio autoplay loop>
-    <source src="lover.mp3" type="audio/mpeg">
+    <source src="so-american.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
 
   <script>
-    document.querySelectorAll('.emoji').forEach(el => {
-      el.addEventListener('click', () => {
-        const answer = el.parentElement.querySelector('.answer');
-        answer.classList.toggle('show');
-      });
-    });
+    function toggleAnswer(el) {
+      const answer = el.querySelector('.answer');
+      answer.classList.toggle('show');
+    }
   </script>
 </body>
 </html>
