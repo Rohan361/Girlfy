@@ -22,15 +22,17 @@
     .header-title {
       position: absolute;
       top: 10px;
-      width: 100%;
-      text-align: center;
-      font-size: 2.5em;
-      color: #a2005c; /* match Will You Be My Girlfriend */
+      left: 50%;
+      transform: translateX(-50%);
       background-color: #ffb6d3;
-      padding: 10px;
+      padding: 10px 30px;
       border-radius: 20px;
-      box-shadow: 0 0 10px #ff69b4;
+      font-size: 1.8em;
+      color: #a2005c;
+      box-shadow: 0 0 15px #ff69b4;
       z-index: 10;
+      animation: float 3s ease-in-out infinite;
+      text-align: center;
     }
 
     .pin {
@@ -59,6 +61,12 @@
       font-size: 15px;
       font-weight: bold;
       z-index: 3;
+    }
+
+    /* SPECIAL tooltip BELOW for top-left & top-right pins */
+    .tooltip.bottom {
+      top: auto;
+      bottom: -90px;
     }
 
     .final-message {
@@ -149,11 +157,16 @@
 </head>
 <body>
   <div class="map-container">
+    <!-- Shorter Title -->
     <div class="header-title">💕 Walk Through Memory Lane 💕</div>
 
     <!-- Pins -->
-    <div class="pin" style="top: 10%; left: 25%;">📍<div class="tooltip">First Date<br>The Oaks Mall 🛍️</div></div>
-    <div class="pin" style="top: 15%; left: 65%;">📍<div class="tooltip">First Kiss<br>Your Birthday 🎂💋</div></div>
+    <div class="pin" style="top: 10%; left: 25%;">📍
+      <div class="tooltip bottom">First Date<br>The Oaks Mall 🛍️</div>
+    </div>
+    <div class="pin" style="top: 15%; left: 65%;">📍
+      <div class="tooltip bottom">First Kiss<br>Your Birthday 🎂💋</div>
+    </div>
     <div class="pin" style="top: 30%; left: 15%;">📍<div class="tooltip">First Meeting<br>Barnes & Noble 📚</div></div>
     <div class="pin" style="top: 50%; left: 45%;">📍<div class="tooltip">Nail Color when you painted mine<br>Grey 💅</div></div>
     <div class="pin" style="top: 75%; left: 70%;">📍<div class="tooltip">Favorite Davis Date 360 comeback<br>Wicked Movie Surprise! 🎭🍿</div></div>
@@ -165,7 +178,7 @@
     <div class="pin" style="top: 58%; left: 80%;">📍<div class="tooltip">Favorite Movie<br>Rocky Aur Rani 🎥💞</div></div>
     <div class="pin" style="top: 43%; left: 75%;">📍<div class="tooltip">Favorite Gift from Bubba<br>Diamond Sword 💎🗡️</div></div>
 
-    <!-- Message & Buttons -->
+    <!-- Will You Be My Girlfriend -->
     <div class="final-message">
       Will You Be My Girlfriend? 💗
       <div class="final-buttons">
@@ -175,14 +188,14 @@
     </div>
   </div>
 
-  <!-- Overlay for result -->
+  <!-- Fireworks & Animal Reveal -->
   <div class="overlay" id="loveScreen">
     <div class="animals" style="display: flex;">
       <img src="cat.jpg" alt="Cat">
       <img src="dog.jpg" alt="Dog">
     </div>
     <h1>💖 You said YES! 💖</h1>
-    <h2>Let’s get infinite aminals and be HAPPE HAPPE bubbas EEEEEE🐾</h2>
+    <h2>Let’s go on the cutest adventure ever 🐾</h2>
     <button class="back-button" onclick="hideLove()">Back to Map</button>
   </div>
 
