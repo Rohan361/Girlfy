@@ -25,9 +25,11 @@
       width: 100%;
       text-align: center;
       font-size: 2.5em;
-      color: #ff4da6;
-      text-shadow: 1px 1px 3px #ffb6c1;
-      font-weight: bold;
+      color: #a2005c; /* match Will You Be My Girlfriend */
+      background-color: #ffb6d3;
+      padding: 10px;
+      border-radius: 20px;
+      box-shadow: 0 0 10px #ff69b4;
       z-index: 10;
     }
 
@@ -139,15 +141,6 @@
       box-shadow: 0 0 10px #ff69b4;
     }
 
-    canvas#fireworks {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100vw;
-      height: 100vh;
-      z-index: 101;
-      pointer-events: none;
-    }
-
     @keyframes float {
       0%, 100% { transform: translateX(-50%) translateY(0); }
       50% { transform: translateX(-50%) translateY(-10px); }
@@ -182,15 +175,14 @@
     </div>
   </div>
 
-  <!-- Fireworks & Animal Reveal -->
-  <canvas id="fireworks"></canvas>
+  <!-- Overlay for result -->
   <div class="overlay" id="loveScreen">
     <div class="animals" style="display: flex;">
       <img src="cat.jpg" alt="Cat">
       <img src="dog.jpg" alt="Dog">
     </div>
     <h1>💖 You said YES! 💖</h1>
-    <h2>Let’s go on the cutest adventure ever 🐾</h2>
+    <h2>Let’s get infinite aminals and be HAPPE HAPPE bubbas EEEEEE🐾</h2>
     <button class="back-button" onclick="hideLove()">Back to Map</button>
   </div>
 
@@ -200,20 +192,17 @@
     Your browser does not support the audio element.
   </audio>
 
-  <!-- Fireworks script -->
-  <script src="https://cdn.jsdelivr.net/npm/fireworks-js@2.1.2/dist/fireworks.js"></script>
+  <!-- Fireworks -->
+  <script src="https://cdn.jsdelivr.net/npm/fireworks-js@1.0.4/dist/index.umd.js"></script>
   <script>
-    const fireworks = new Fireworks(document.getElementById('fireworks'), {
-      hue: { min: 0, max: 360 },
-      delay: { min: 15, max: 30 },
-      rocketsPoint: 50,
-      speed: 2,
-      acceleration: 1.05,
-      friction: 0.97,
-      gravity: 1.5,
-      particles: 100,
-      trace: 3,
-      explosion: 5
+    const container = document.body;
+    const fireworks = new Fireworks.default(container, {
+      maxRockets: 5,
+      rocketSpawnInterval: 150,
+      numParticles: 100,
+      explosionMinHeight: 0.3,
+      explosionMaxHeight: 0.8,
+      explosionChance: 0.08
     });
 
     function launchLove() {
